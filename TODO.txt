@@ -1,0 +1,15 @@
+post_left
+post_right
+post_set
+post_erase
+post_stop
+post_read
+
+
+-----------------------------------
+post_tape (widget)      [+-]
+post_engine (class)     [-]
+post_program (widget)   [+-]
+post_command (widget)   [+-]
+settings (class)        [+-]
+-----------------------------------

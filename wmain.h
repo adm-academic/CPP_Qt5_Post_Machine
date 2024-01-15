@@ -15,6 +15,14 @@ public:
     WMain(QWidget *parent = nullptr);
     ~WMain();
 
+private slots:
+    void on_pb_left_clicked();
+    void on_pb_right_clicked();
+    void on_pb_set_clicked();
+    void on_pb_erase_clicked();
+
+    void on_pb_read_clicked();
+
 private:
     Ui::WMain *ui;
 };

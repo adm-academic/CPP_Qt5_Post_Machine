@@ -11,11 +11,17 @@ CONFIG += c++17
 SOURCES += \
     global_forms.cpp \
     main.cpp \
+    post_command.cpp \
+    post_program.cpp \
+    post_tape.cpp \
     settings.cpp \
     wmain.cpp
 
 HEADERS += \
     global_forms.h \
+    post_command.h \
+    post_program.h \
+    post_tape.h \
     settings.h \
     wmain.h
 
@@ -33,4 +39,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    TODO.txt \
     settings.conf

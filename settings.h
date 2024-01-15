@@ -3,8 +3,6 @@
 #define SETTINGS_H
 
 #include <QObject>
-#include <QApplication>
-#include <QLocale>
 #include <QTranslator>
 
 // объект доступа к конфигурации программы
@@ -15,11 +13,12 @@ public:
     explicit Settings(QObject *parent = nullptr);
 
 public:
-    QString application_locale_get();
-    void    application_locale_set(QString locale);
+    QString get_application_locale();
+    void    set_application_locale(QString locale);
+
 public:
     // возвращает истину если файл существует
-    bool    fileExists(QString path);
+    bool    file_exists(QString path);
     // находит папку с исходниками и переходит туда
     void    find_basedir_and_changedir();
     // загружает текущую указанную в конфиг-файле локаль
