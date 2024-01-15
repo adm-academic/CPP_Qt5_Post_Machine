@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListWidget>
+#include <QLineEdit>
 
 class Post_Command_List : public QListWidget
 {
@@ -19,10 +20,14 @@ protected:
 
 protected slots:
     void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
+
+    // QWidget interface
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 
-class Post_Command : public QWidget
+class Post_Command : public QLineEdit
 {
     Q_OBJECT
 public:

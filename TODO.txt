@@ -8,8 +8,18 @@ post_read
 
 -----------------------------------
 post_tape (widget)      [+-]
+...
+
 post_engine (class)     [-]
+...
+
 post_program (widget)   [+-]
+...
+
 post_command (widget)   [+-]
+добавить в виджет выбора команды картинки для каждой команды
+
 settings (class)        [+-]
+...
+
 -----------------------------------

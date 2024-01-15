@@ -5,10 +5,11 @@
 #include <QStringList>
 #include <QDebug>
 #include <QListWidgetItem>
+#include <QKeyEvent>
 
 
 Post_Command::Post_Command(QWidget *parent)
-    : QWidget{parent}
+    : QLineEdit{parent}
 {
     if ( parent != nullptr ){
         this->list_widget = new Post_Command_List( parent );
@@ -24,6 +25,8 @@ Post_Command::Post_Command(QWidget *parent)
         connect( this->list_widget, SIGNAL(change_command(QString)),
                  this, SLOT(slot_change_command(QString)) );
 
+        this->setReadOnly(true);
+        this->setStyleSheet(" border-width:0px; border-color: white;  ");
     };
 }
 
@@ -44,6 +47,7 @@ QString Post_Command::get_selected_command()
 
 void Post_Command::paintEvent(QPaintEvent *event)
 {
+    QLineEdit::paintEvent(event);
 
     QPainter p(this);
 
@@ -78,7 +82,7 @@ void Post_Command::mousePressEvent(QMouseEvent *event)
 
 void Post_Command::keyPressEvent(QKeyEvent *event)
 {
-    this->show_list();
+
 }
 
 void Post_Command::show_list()
@@ -95,6 +99,7 @@ void Post_Command::show_list()
     };
 
     this->list_widget->show();
+    this->list_widget->setFocus(Qt::PopupFocusReason);
 }
 
 void Post_Command::slot_change_command(QString new_command)
@@ -107,6 +112,7 @@ Post_Command_List::Post_Command_List(QWidget *parent) : QListWidget(parent)
     connect( this, SIGNAL(itemClicked(QListWidgetItem*)),
              this, SLOT(hide())
            );
+
 }
 
 Post_Command_List::~Post_Command_List()
@@ -124,6 +130,11 @@ void Post_Command_List::currentChanged(const QModelIndex &current, const QModelI
 {
     emit change_command( this->itemFromIndex(current)->text() );
     QListWidget::currentChanged( current, previous );
+}
+
+void Post_Command_List::keyPressEvent(QKeyEvent *event)
+{
+
 }
 
 
