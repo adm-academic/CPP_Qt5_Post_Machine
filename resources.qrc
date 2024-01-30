@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>stop.png</file>
+        <file>arrow_l.png</file>
+        <file>arrow_r.png</file>
+        <file>mark.png</file>
+        <file>erase.png</file>
+        <file>condition.png</file>
+    </qresource>
+</RCC>

@@ -12,6 +12,7 @@ SOURCES += \
     global_forms.cpp \
     main.cpp \
     post_command.cpp \
+    post_engine.cpp \
     post_program.cpp \
     post_tape.cpp \
     settings.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     global_forms.h \
     post_command.h \
+    post_engine.h \
     post_program.h \
     post_tape.h \
     settings.h \
@@ -41,3 +43,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     TODO.txt \
     settings.conf
+
+RESOURCES += \
+    resources.qrc

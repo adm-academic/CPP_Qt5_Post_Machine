@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QPalette>
 #include <QLineEdit>
+#include <QDebug>
 #include "post_command.h"
 
 WMain::WMain(QWidget *parent)
@@ -16,30 +17,9 @@ WMain::WMain(QWidget *parent)
 {
     ui->setupUi(this);
 
-    move(screen()->geometry().center() - frameGeometry().center());
+    move(screen()->geometry().center() - frameGeometry().center());    
 
-//    for(int i=0;i<this->ui->program_widget->rowCount();i++){
-//        QComboBox* pcb = new QComboBox(this->ui->program_widget);
-//        pcb->addItems( QStringList() << "<" << ">" << "s" << "e" << "if" << "!" );
-//        //pcb->setStyleSheet("QComboBox::drop-down {border-width: 0px;  } "
-//        //                   "QComboBox::down-arrow {image: none; border-width: 0px; } "
-//        //                   );
-
-//        // 1: Установить editable (чтобы использовать lineEdit)
-//        pcb->setEditable(true);
-//        // 2: Запретить в lineEdit что-либо редактировать
-//        pcb->lineEdit()->setReadOnly(true);
-//        // 3: Установить выравнивание для lineEdit
-//        pcb->lineEdit()->setAlignment(Qt::AlignCenter);
-
-//        this->ui->program_widget->setCellWidget(i,0,pcb);
-//    };
-    for(int i=0;i<this->ui->program_widget->rowCount();i++){
-        Post_Command* ppc = new Post_Command(this->ui->program_widget);
-
-        this->ui->program_widget->setCellWidget(i,0,ppc);
-    }
-
+    this->post_engine = new Post_Engine(this,this->ui->program_widget,this->ui->tape_widget);
 }
 
 WMain::~WMain()
@@ -74,5 +54,67 @@ void WMain::on_pb_read_clicked()
     bool mark=false;
     this->ui->tape_widget->command_tape_read( mark );
     QMessageBox::warning(this, "Read", QString::number( mark ) );
+}
+
+
+void WMain::on_pushButton_clicked()
+{
+    for (int i=0;i<this->ui->program_widget->rowCount();i++){
+        Post_Command* pcr = qobject_cast<Post_Command *>( this->ui->program_widget->cellWidget(i,0) );
+        qDebug() << pcr << pcr->get_selected_command();
+    };
+}
+
+void WMain::on_pb_append_clicked()
+{
+    this->ui->program_widget->row_append();
+}
+
+
+void WMain::on_pb_insert_clicked()
+{
+    this->ui->program_widget->row_insert();
+}
+
+
+void WMain::on_pb_delete_clicked()
+{
+    this->ui->program_widget->row_delete();
+}
+
+
+void WMain::on_pb_move_up_clicked()
+{
+    this->ui->program_widget->row_move_up();
+}
+
+
+void WMain::on_pb_move_down_clicked()
+{
+    this->ui->program_widget->row_move_down();
+}
+
+
+void WMain::on_pb_start_clicked()
+{
+    this->post_engine->start_program();
+}
+
+
+void WMain::on_pb_stop_clicked()
+{
+    this->post_engine->stop_program();
+}
+
+
+void WMain::on_pb_break_clicked()
+{
+    this->post_engine->break_program();
+}
+
+
+void WMain::on_pb_step_by_step_clicked()
+{
+    this->post_engine->step_program();
 }
 
