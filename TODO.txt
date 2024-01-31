@@ -1,16 +1,8 @@
-post_left
-post_right
-post_set
-post_erase
-post_stop
-post_read
-
-
 -----------------------------------
 post_tape (widget)      [++-]
 ...
 
-post_engine (class)     [-]
+post_engine (class)     [++-]
 ...
 
 post_program (widget)   [++-]
@@ -21,24 +13,27 @@ post_command (widget)   [++-]
 
 settings (class)        [++-]
 ...
-
 -----------------------------------
 
+1. Сохранение ленты+прогаммы в файл. [-]
+2. Загрузка ленты+прогаммы из файла. [-]
+3. Новая лента+программа.            [-]
 
+------------------------------------
 
+1. Скорость медленно      [-]
+2. Скорость средне        [-]
+3. Скорость быстро        [-]
+4. Скорость очень быстро  [-]
 
-бесконечный цикл - repeat...
-............
-start_program <from 0 row>
-break_program <goto 0 row>
-step_program <goto next row>
-stop_program <goto 0 row>
-error_program <leave here>
+------------------------------------
 
-int program_row
-int get_program_row()
-int program_state  STOPPED, RUN_AUTO, RUN_STEP
+1. Помощь       [-]
+2. О программе  [-]
+3. О Qt         [-]
 
+------------------------------------
 
+... Настройки, разные [------]
 
-
+------------------------------------

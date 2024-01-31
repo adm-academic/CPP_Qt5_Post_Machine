@@ -86,16 +86,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pb_break">
+           <widget class="QPushButton" name="pb_debug">
             <property name="text">
-             <string>break</string>
+             <string>debug mode</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pb_step_by_step">
+           <widget class="QPushButton" name="pb_next_step">
             <property name="text">
-             <string>step by step</string>
+             <string>next step</string>
             </property>
            </widget>
           </item>
@@ -111,6 +111,20 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="lb_mode">
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
+color: blue;</string>
+            </property>
+            <property name="text">
+             <string>STOPPED</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

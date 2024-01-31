@@ -27,8 +27,8 @@ private slots:
 
     void on_pb_start_clicked();
     void on_pb_stop_clicked();
-    void on_pb_break_clicked();
-    void on_pb_step_by_step_clicked();
+    void on_pb_debug_clicked();
+    void on_pb_next_step_clicked();
 
 private:
     Ui::WMain *ui;

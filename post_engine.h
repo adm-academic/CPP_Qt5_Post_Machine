@@ -22,12 +22,11 @@ public:
     virtual ~Post_Engine();
 
     Execution_State get_execution_state(); // возвращает текущее состояние движка
-    int get_current_row(); // возвращает текущую строку движка
 
     void start_program(); // стартует программу
-    void break_program(); // останавливает программу
     void step_program();  // делает следующий шаг программы
-    void stop_program();  // останавливает программу штатно
+    void stop_program();  // останавливает программу
+    void debug_program_from_current_line(); // с текущей строки программы включает пошаговый режим
     void error_program(QString error); // останавливает программу аварийно
 
 protected:

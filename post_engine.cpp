@@ -11,7 +11,7 @@ Post_Engine::Post_Engine(QObject *parent, Post_Program *post_program, Post_Tape 
     this->timer = new QTimer;
     connect(this->timer,&QTimer::timeout,
             this,&Post_Engine::slot_next_step_program);
-    this->timer->setInterval(500);
+    this->timer->setInterval( 1000 );
 }
 
 Post_Engine::~Post_Engine()
@@ -24,35 +24,42 @@ Execution_State Post_Engine::get_execution_state()
     return this->execution_state;
 }
 
-int Post_Engine::get_current_row()
-{
-    return 000; //this->current_row;
-}
-
 void Post_Engine::start_program()
 {
     if ( this->execution_state == Execution_State::RUN_AUTO ){ // сейчас запущено
-        return;
+        return; // ничего не делаем если уже запущено !
     }
     else if ( this->execution_state == Execution_State::RUN_STEP ) {// сейчас запущено пошагово
-        this->timer->start();
+        this->execution_state = Execution_State::RUN_AUTO;
         emit this->change_state( this->execution_state );
+        this->timer->start(); // продолжим исполнение автоматически
     }
     else if ( this->execution_state == Execution_State::STOPPED ){ // сейчас остановлено
-        this->post_program->selectRow(0);
+        this->post_program->selectRow(0); // перейдём на первую строку программы
+        this->execution_state = Execution_State::RUN_AUTO;
         emit this->change_state( this->execution_state );
-        this->timer->start();
+        this->timer->start(); // запустим исполнение автоматически
     };
-}
-
-void Post_Engine::break_program()
-{
-    //............................
 }
 
 void Post_Engine::stop_program()
 {
-    //............................
+    this->execution_state = Execution_State::STOPPED;
+    this->timer->stop();
+    emit this->change_state( this->execution_state );
+}
+
+void Post_Engine::debug_program_from_current_line()
+{
+    if ( this->execution_state == Execution_State::RUN_STEP ) {
+        return;
+    }
+    else if ( this->execution_state == Execution_State::RUN_AUTO
+              or this->execution_state == Execution_State::STOPPED ){
+        this->timer->stop();
+        this->execution_state = Execution_State::RUN_STEP;
+        emit this->change_state( this->execution_state );
+    };
 }
 
 void Post_Engine::error_program(QString error)
@@ -91,10 +98,17 @@ int Post_Engine::get_int_reference(QString reference)
 void Post_Engine::step_program()
 {
     // qDebug() << "###";
-    int current_row = this->post_program->currentRow();
+    int current_row =   this->post_program->currentRow();
     QString command   = this->post_program->get_cell_string(current_row,0);
     QString reference = this->post_program->get_cell_string(current_row,1);
     QString comment   = this->post_program->get_cell_string(current_row,2);
+
+    if ( (current_row+1)==this->post_program->rowCount() // провеяем штатный конец программы
+         and reference.trimmed().isEmpty()
+         and command!="stop" ){
+        this->error_program( tr("Error! The program ended unexpectedly!") );
+        return;
+    };
 
     if ( command=="" ){///+
         this->error_program( tr("Error! Empty instruction!") );
@@ -102,8 +116,13 @@ void Post_Engine::step_program()
     }
     else if ( command=="left" ){///-+
          //programm handling reference error
-        if ( !this->check_reference(reference) )
-            return;
+        if ( reference.trimmed().isEmpty() ){
+            reference = QString::number( current_row+2 );
+        }
+        else{
+            if ( !this->check_reference(reference) )
+                return;
+        };
 
         // ...... tape handling left edge exit error
         this->post_tape->command_tape_left();
@@ -113,8 +132,13 @@ void Post_Engine::step_program()
     }
     else if ( command=="right" ){///-+
         //programm handling reference error
-        if ( !this->check_reference(reference) )
-            return;
+        if ( reference.trimmed().isEmpty() ){
+            reference = QString::number( current_row+2 );
+        }
+        else{
+            if ( !this->check_reference(reference) )
+                return;
+        };
 
         // ...... tape handling right edge exit error
         this->post_tape->command_tape_right();
@@ -124,8 +148,13 @@ void Post_Engine::step_program()
     }
     else if ( command=="mark" ){///-+
         //programm handling reference error
-        if ( !this->check_reference(reference) )
-            return;
+        if ( reference.trimmed().isEmpty() ){
+            reference = QString::number( current_row+2 );
+        }
+        else{
+            if ( !this->check_reference(reference) )
+                return;
+        };
 
         // ...... tape handling already mark error
         this->post_tape->command_tape_mark();
@@ -135,8 +164,13 @@ void Post_Engine::step_program()
     }
     else if ( command=="erase" ){///-+
         //programm handling reference error
-        if ( !this->check_reference(reference) )
-            return;
+        if ( reference.trimmed().isEmpty() ){
+            reference = QString::number( current_row+2 );
+        }
+        else{
+            if ( !this->check_reference(reference) )
+                return;
+        };
 
         // ...... tape handling nothing to erase error
         this->post_tape->command_tape_erase();
@@ -193,6 +227,7 @@ void Post_Engine::step_program()
     else if ( command=="stop" ){///+
         this->timer->stop();
         this->execution_state = Execution_State::STOPPED;
+        emit this->change_state( this->execution_state );
         QMessageBox msgBox;
         msgBox.setWindowTitle( tr("Info") );
         msgBox.setText( tr("Programm success finished!") );
@@ -203,7 +238,10 @@ void Post_Engine::step_program()
 
 void Post_Engine::slot_next_step_program() // слот для таймера авто-выыполнения программы
 {
-    this->step_program(); // обрабатываем очередной шаг программы
+    if ( this->execution_state == Execution_State::RUN_AUTO
+         or this->execution_state == Execution_State::RUN_STEP ){
+        this->step_program(); // обрабатываем очередной шаг программы
+    };
 }
 
 
