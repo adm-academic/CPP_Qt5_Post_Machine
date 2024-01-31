@@ -27,44 +27,6 @@ WMain::~WMain()
     delete ui;
 }
 
-
-void WMain::on_pb_left_clicked()
-{
-    this->ui->tape_widget->command_tape_left();
-}
-
-void WMain::on_pb_right_clicked()
-{
-    this->ui->tape_widget->command_tape_right();
-}
-
-void WMain::on_pb_set_clicked()
-{
-    this->ui->tape_widget->command_tape_set();
-}
-
-void WMain::on_pb_erase_clicked()
-{
-    this->ui->tape_widget->command_tape_erase();
-}
-
-
-void WMain::on_pb_read_clicked()
-{
-    bool mark=false;
-    this->ui->tape_widget->command_tape_read( mark );
-    QMessageBox::warning(this, "Read", QString::number( mark ) );
-}
-
-
-void WMain::on_pushButton_clicked()
-{
-    for (int i=0;i<this->ui->program_widget->rowCount();i++){
-        Post_Command* pcr = qobject_cast<Post_Command *>( this->ui->program_widget->cellWidget(i,0) );
-        qDebug() << pcr << pcr->get_selected_command();
-    };
-}
-
 void WMain::on_pb_append_clicked()
 {
     this->ui->program_widget->row_append();

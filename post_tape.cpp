@@ -156,7 +156,7 @@ bool Post_Tape::command_tape_right()
     return true;
 }
 
-bool Post_Tape::command_tape_set()
+bool Post_Tape::command_tape_mark()
 {
     if ( (*this->tape)[this->carriage_tape_position]==1 )
         return false;

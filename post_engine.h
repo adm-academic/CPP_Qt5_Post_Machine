@@ -32,8 +32,10 @@ public:
 
 protected:
     bool check_reference(QString reference);
+    int  get_int_reference(QString reference);
 
 signals:
+    void change_state(Execution_State new_state);
 
 private slots:
     void slot_next_step_program();
@@ -41,7 +43,6 @@ private slots:
 private:
     Post_Program* post_program = nullptr;
     Post_Tape* post_tape = nullptr;
-    int current_row = 0;
     Execution_State execution_state = Execution_State::STOPPED;
     QTimer* timer = nullptr;
 

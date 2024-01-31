@@ -17,15 +17,7 @@ public:
     ~WMain();
 
 private slots:
-    void on_pb_left_clicked();
-    void on_pb_right_clicked();
-    void on_pb_set_clicked();
-    void on_pb_erase_clicked();
-    void on_pb_read_clicked();
-
-    void on_pushButton_clicked();
-
-
+    void slot_change_state(Execution_State new_state);
 
     void on_pb_append_clicked();
     void on_pb_insert_clicked();

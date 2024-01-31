@@ -30,7 +30,7 @@ public:
 
     bool command_tape_left(); // переход влево
     bool command_tape_right();// переход вправо
-    bool command_tape_set();  // установить метку в текущей ячейке
+    bool command_tape_mark();  // установить метку в текущей ячейке
     bool command_tape_erase();// стереть метку в текущей ячейке
     bool command_tape_read(bool & have_mark); // читает отметку из текущей ячейки
 
