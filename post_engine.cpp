@@ -6,7 +6,6 @@ Post_Engine::Post_Engine(QObject *parent, Post_Program *post_program, Post_Tape 
     : QObject{parent}
 {
     this->execution_state = Execution_State::STOPPED;
-    this->current_row = 0;
     this->post_program = post_program;
     this->post_tape = post_tape;
     this->timer = new QTimer;
@@ -27,17 +26,21 @@ Execution_State Post_Engine::get_execution_state()
 
 int Post_Engine::get_current_row()
 {
-    return this->current_row;
+    return 000; //this->current_row;
 }
 
 void Post_Engine::start_program()
 {
-    if ( this->execution_state == Execution_State::RUN_AUTO ) // сейчас запущено
+    if ( this->execution_state == Execution_State::RUN_AUTO ){ // сейчас запущено
         return;
-    else if ( this->execution_state == Execution_State::RUN_STEP ) // сейчас запущено пошагово
+    }
+    else if ( this->execution_state == Execution_State::RUN_STEP ) {// сейчас запущено пошагово
         this->timer->start();
+        emit this->change_state( this->execution_state );
+    }
     else if ( this->execution_state == Execution_State::STOPPED ){ // сейчас остановлено
-        this->current_row = 0;
+        this->post_program->selectRow(0);
+        emit this->change_state( this->execution_state );
         this->timer->start();
     };
 }
@@ -88,10 +91,10 @@ int Post_Engine::get_int_reference(QString reference)
 void Post_Engine::step_program()
 {
     // qDebug() << "###";
-    this->current_row = this->post_program->currentRow();
-    QString command   = this->post_program->get_cell_string(this->current_row,0);
-    QString reference = this->post_program->get_cell_string(this->current_row,1);
-    QString comment   = this->post_program->get_cell_string(this->current_row,2);
+    int current_row = this->post_program->currentRow();
+    QString command   = this->post_program->get_cell_string(current_row,0);
+    QString reference = this->post_program->get_cell_string(current_row,1);
+    QString comment   = this->post_program->get_cell_string(current_row,2);
 
     if ( command=="" ){///+
         this->error_program( tr("Error! Empty instruction!") );
@@ -106,7 +109,6 @@ void Post_Engine::step_program()
         this->post_tape->command_tape_left();
         int int_reference = this->get_int_reference(reference);
         this->post_program->selectRow( int_reference-1 );
-        this->current_row = this->post_program->currentRow();
         return;
     }
     else if ( command=="right" ){///-+
@@ -118,7 +120,6 @@ void Post_Engine::step_program()
         this->post_tape->command_tape_right();
         int int_reference = this->get_int_reference(reference);
         this->post_program->selectRow( int_reference-1 );
-        this->current_row = this->post_program->currentRow();
         return;
     }
     else if ( command=="mark" ){///-+
@@ -130,7 +131,6 @@ void Post_Engine::step_program()
         this->post_tape->command_tape_mark();
         int int_reference = this->get_int_reference(reference);
         this->post_program->selectRow( int_reference-1 );
-        this->current_row = this->post_program->currentRow();
         return;
     }
     else if ( command=="erase" ){///-+
@@ -142,7 +142,6 @@ void Post_Engine::step_program()
         this->post_tape->command_tape_erase();
         int int_reference = this->get_int_reference(reference);
         this->post_program->selectRow( int_reference-1 );
-        this->current_row = this->post_program->currentRow();
         return;
     }
     else if ( command=="condition" ){ ///+
@@ -184,12 +183,10 @@ void Post_Engine::step_program()
         this->post_tape->command_tape_read( current_tape_cell_marked );
         if ( !current_tape_cell_marked ){
             this->post_program->selectRow( ref_empty-1 );
-            this->current_row = this->post_program->currentRow();
             return;
         }
         else{
             this->post_program->selectRow( ref_filled-1 );
-            this->current_row = this->post_program->currentRow();
             return;
         };
     }

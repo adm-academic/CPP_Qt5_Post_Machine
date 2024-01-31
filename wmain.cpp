@@ -27,6 +27,11 @@ WMain::~WMain()
     delete ui;
 }
 
+void WMain::slot_change_state(Execution_State new_state)
+{
+    //..................................
+}
+
 void WMain::on_pb_append_clicked()
 {
     this->ui->program_widget->row_append();

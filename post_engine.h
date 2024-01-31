@@ -45,9 +45,6 @@ private:
     Post_Tape* post_tape = nullptr;
     Execution_State execution_state = Execution_State::STOPPED;
     QTimer* timer = nullptr;
-
-
-
 };
 
 #endif // POST_ENGINE_H
