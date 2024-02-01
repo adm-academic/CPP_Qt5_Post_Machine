@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>617</height>
+    <width>773</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,6 +17,25 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>15</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Text of Task:</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QPlainTextEdit" name="plainTextEdit">
         <property name="sizePolicy">
@@ -56,7 +75,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>3</number>
         </property>
         <property name="tabSpacing">
          <number>0</number>
@@ -67,11 +86,11 @@
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Файл</string>
+          <string>File</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
@@ -131,11 +150,11 @@
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Исполнение</string>
+          <string>Execution</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
@@ -156,7 +175,7 @@
           <item>
            <widget class="QPushButton" name="pb_start">
             <property name="text">
-             <string>start</string>
+             <string>Start</string>
             </property>
             <property name="flat">
              <bool>false</bool>
@@ -166,21 +185,21 @@
           <item>
            <widget class="QPushButton" name="pb_stop">
             <property name="text">
-             <string>stop</string>
+             <string>Stop</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_debug">
             <property name="text">
-             <string>debug mode</string>
+             <string>Debug Mode</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_next_step">
             <property name="text">
-             <string>next step</string>
+             <string>Next Step</string>
             </property>
            </widget>
           </item>
@@ -219,11 +238,11 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Программа</string>
+          <string>Program</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
@@ -244,35 +263,35 @@ color: blue;</string>
           <item>
            <widget class="QPushButton" name="pb_append">
             <property name="text">
-             <string>append</string>
+             <string>Append</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_insert">
             <property name="text">
-             <string>insert</string>
+             <string>Insert</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_delete">
             <property name="text">
-             <string>delete</string>
+             <string>Delete</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_move_up">
             <property name="text">
-             <string>move ^ up</string>
+             <string>Move ^ up</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pb_move_down">
             <property name="text">
-             <string>move v down</string>
+             <string>Move v down</string>
             </property>
            </widget>
           </item>
@@ -297,11 +316,11 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Скорость</string>
+          <string>Speed</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <property name="spacing">
@@ -320,11 +339,48 @@ color: blue;</string>
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QRadioButton" name="rb_speed_slow">
             <property name="text">
-             <string>PushButton</string>
+             <string>Slow</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rb_speed_medium">
+            <property name="text">
+             <string>Medium</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rb_speed_fast">
+            <property name="text">
+             <string>Fast</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rb_speed_veryfast">
+            <property name="text">
+             <string>Very Fast</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -334,11 +390,11 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Настройки</string>
+          <string>Settings</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="spacing">
@@ -356,13 +412,6 @@ color: blue;</string>
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item>
-           <widget class="QPushButton" name="pushButton_2">
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="tbp_help">
@@ -371,11 +420,11 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>194</height>
+           <height>206</height>
           </rect>
          </property>
          <attribute name="label">
-          <string>Помощь</string>
+          <string>Help</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <property name="spacing">
@@ -394,11 +443,38 @@ color: blue;</string>
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="pb_help">
             <property name="text">
-             <string>PushButton</string>
+             <string>Help</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pb_about">
+            <property name="text">
+             <string>About</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pb_about_qt">
+            <property name="text">
+             <string>About Qt</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -412,51 +488,6 @@ color: blue;</string>
           <height>300</height>
          </size>
         </property>
-        <property name="editTriggers">
-         <set>QAbstractItemView::AllEditTriggers</set>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <property name="gridStyle">
-         <enum>Qt::DashLine</enum>
-        </property>
-        <property name="cornerButtonEnabled">
-         <bool>false</bool>
-        </property>
-        <property name="rowCount">
-         <number>6</number>
-        </property>
-        <property name="columnCount">
-         <number>3</number>
-        </property>
-        <attribute name="horizontalHeaderStretchLastSection">
-         <bool>true</bool>
-        </attribute>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <column>
-         <property name="text">
-          <string>Команда</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Отсылка</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Комментарий</string>
-         </property>
-        </column>
        </widget>
       </item>
      </layout>
@@ -468,7 +499,7 @@ color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>750</width>
+     <width>773</width>
      <height>32</height>
     </rect>
    </property>

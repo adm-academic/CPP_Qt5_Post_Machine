@@ -30,6 +30,8 @@ private slots:
     void on_pb_debug_clicked();
     void on_pb_next_step_clicked();
 
+    void on_pb_about_qt_clicked();
+
 private:
     Ui::WMain *ui;
     Post_Engine* post_engine;

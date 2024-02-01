@@ -19,6 +19,7 @@ WMain::WMain(QWidget *parent)
     connect( this->post_engine, &Post_Engine::change_state,
              this, &WMain::slot_change_state );
     this->slot_change_state(Execution_State::STOPPED);
+    this->ui->toolbox_menu->setCurrentIndex(1);
 }
 
 WMain::~WMain()
@@ -104,4 +105,8 @@ void WMain::on_pb_next_step_clicked()
 
 
 
+void WMain::on_pb_about_qt_clicked()
+{
+    QApplication::aboutQt();
+}
 

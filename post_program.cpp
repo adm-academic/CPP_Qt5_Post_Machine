@@ -8,9 +8,13 @@
 
 void Post_Program::initialize()
 {
-    this->setRowCount(6);
+    this->setRowCount(7);
     this->setColumnCount(3);
-    this->setHorizontalHeaderLabels( QStringList() << "Команда" << "Отсылка" << "Комментарий" );
+    this->setHorizontalHeaderLabels( QStringList()
+                                     << tr("Command")
+                                     << tr("Reference")
+                                     << tr("Comment")
+                                   );
     this->setEditTriggers( QAbstractItemView::AllEditTriggers  );
     this->setSelectionMode( QAbstractItemView::SingleSelection );
     this->setSelectionBehavior( QAbstractItemView::SelectRows );
