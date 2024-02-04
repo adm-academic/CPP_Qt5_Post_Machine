@@ -19,6 +19,10 @@ WMain::WMain(QWidget *parent)
     connect( this->post_engine, &Post_Engine::change_state,
              this, &WMain::slot_change_state );
     this->slot_change_state(Execution_State::STOPPED);
+
+    this->file_layer= new File_Layer(this,this->ui->pte_task,
+                                     this->ui->tape_widget,this->ui->program_widget);
+
     this->ui->toolbox_menu->setCurrentIndex(1);
 }
 
@@ -108,5 +112,23 @@ void WMain::on_pb_next_step_clicked()
 void WMain::on_pb_about_qt_clicked()
 {
     QApplication::aboutQt();
+}
+
+
+void WMain::on_pb_file_new_clicked()
+{
+    this->file_layer->dialog_new_program();
+}
+
+
+void WMain::on_pb_file_save_clicked()
+{
+    this->file_layer->dialog_save_to_file();
+}
+
+
+void WMain::on_pb_file_load_clicked()
+{
+    this->file_layer->dialog_load_from_file();
 }
 

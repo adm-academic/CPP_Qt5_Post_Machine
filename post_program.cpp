@@ -153,6 +153,37 @@ QString Post_Program::get_cell_string(int cell_row, int cell_col) // возвр�
     };
 }
 
+void Post_Program::clear()
+{
+    this->setRowCount(7);
+    for (int i=0; i<this->rowCount(); i++  ){
+        this->set_cell_string(i,0,"");
+        this->set_cell_string(i,1,"");
+        this->set_cell_string(i,2,"");
+    };
+}
+
+void Post_Program::set_cell_string(int cell_row, int cell_col, QString str)
+{
+    if ( this->rowCount()<=0 ) // возврат если таблица пустая
+        return ;
+    if ( this->columnCount()<=0 ) // возврат если таблица пустая
+        return ;
+    if ( cell_row<0 or cell_row>=this->rowCount() ) // возврат если строка неактуальна
+        return ;
+    if ( cell_col<0 or cell_col>=this->columnCount() ) // возврат если столбец неактуален
+        return ;
+
+    if ( cell_col ==0 ){ // если столбец нулевой - нужно обратиться к внедрённому виджету
+        // получим указатель на внедрённый виджет
+        Post_Command* pc = qobject_cast<Post_Command *>( this->cellWidget(cell_row,cell_col) );
+        pc->set_selected_command(str);
+    }
+    else if ( cell_col==1 or cell_col==2  ){
+        this->setItem( cell_row, cell_col, new QTableWidgetItem( str ) );
+    };
+}
+
 void Post_Program::paintEvent(QPaintEvent *event)
 {
     this->resizeColumnToContents(0);

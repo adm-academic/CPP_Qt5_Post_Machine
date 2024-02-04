@@ -212,16 +212,18 @@ void Post_Command_List::keyPressEvent(QKeyEvent *event)
 }
 
 void Post_Command_List::wheelEvent(QWheelEvent *event)
-{
+{   
+    int udelta = event->angleDelta().y();
     int new_row = 0;
-    if( event->delta() > 0)
+
+    if( udelta > 0 )
     {
         if ( this->currentRow() == 0 )
             new_row = this->count()-1;
         else if ( this->currentRow()>0 and this->currentRow()<this->count() )
             new_row = this->currentRow() - 1;
     }
-    else{
+    else if ( udelta < 0 ){
         if ( this->currentRow() == this->count()-1  )
             new_row = 0;
         else if ( this->currentRow()>=0 and this->currentRow()<this->count()-1 )

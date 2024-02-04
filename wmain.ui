@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
+    <width>850</width>
     <height>650</height>
    </rect>
   </property>
@@ -37,7 +37,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
+       <widget class="QPlainTextEdit" name="pte_task">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
           <horstretch>0</horstretch>
@@ -47,13 +47,19 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>80</height>
+          <height>100</height>
          </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="Post_Tape" name="tape_widget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>300</width>
@@ -75,7 +81,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>2</number>
         </property>
         <property name="tabSpacing">
          <number>0</number>
@@ -86,7 +92,7 @@
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -150,7 +156,7 @@
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -238,7 +244,7 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -316,7 +322,7 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -390,7 +396,7 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -420,7 +426,7 @@ color: blue;</string>
            <x>0</x>
            <y>0</y>
            <width>160</width>
-           <height>206</height>
+           <height>186</height>
           </rect>
          </property>
          <attribute name="label">
@@ -499,7 +505,7 @@ color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>773</width>
+     <width>850</width>
      <height>32</height>
     </rect>
    </property>

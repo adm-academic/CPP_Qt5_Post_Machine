@@ -138,6 +138,34 @@ int Post_Tape::map_tape_to_visible(int cell_index)
         return cell_index - this->tape_visible_start;
 }
 
+void Post_Tape::get_fast_tape_cell(int &cell_index, short &cell_value)
+{
+    cell_value = (*this->tape)[cell_index];
+}
+
+void Post_Tape::set_fast_tape_cell(int &cell_index, short &cell_value)
+{
+    (*this->tape)[cell_index] = cell_value;
+}
+
+void Post_Tape::clear()
+{
+    for (int i=this->tape_size_from; i<this->tape_size_to; i++ )
+        (*this->tape)[i] = 0;
+    this->set_tape_visible_start(-8);
+    this->repaint();
+}
+
+int Post_Tape::get_carriage_position()
+{
+    return this->carriage_tape_position;
+}
+
+void Post_Tape::set_carriage_position(int position)
+{
+    this->carriage_tape_position = position;
+}
+
 bool Post_Tape::command_tape_left()
 {
     this->tape_visible_start --;

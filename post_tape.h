@@ -28,6 +28,13 @@ public:
     int map_tape_to_visible(int cell_index); // переводит координату из ленточной в экранную
 
 
+    void get_fast_tape_cell( int& cell_index, short& cell_value ); // возвращает значение ячейки ленты по координате
+    void set_fast_tape_cell( int& cell_index, short& cell_value ); // устанавливает значение ячейки ленты по координате
+    void clear(); // очистить всю ленту
+    int  get_carriage_position(); // возвращает позицию каретки над лентой
+    void set_carriage_position(int position);// устанавливает позицию каретки над лентой
+
+
     bool command_tape_left(); // переход влево
     bool command_tape_right();// переход вправо
     bool command_tape_mark();  // установить метку в текущей ячейке

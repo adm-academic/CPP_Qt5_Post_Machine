@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    file_layer.cpp \
     global_forms.cpp \
     main.cpp \
     post_command.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
     wmain.cpp
 
 HEADERS += \
+    file_layer.h \
     global_forms.h \
     post_command.h \
     post_engine.h \

@@ -15,6 +15,8 @@ public:
     virtual ~Post_Program();
 
     QString get_cell_string(int cell_row, int cell_col);
+    void    clear();
+    void    set_cell_string(int cell_row, int cell_col, QString str);
 
     void row_append();
     void row_insert();
