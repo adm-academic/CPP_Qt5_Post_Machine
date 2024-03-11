@@ -1,14 +1,14 @@
 #include "wabout.h"
 #include "ui_wabout.h"
 
-wabout::wabout(QWidget *parent) :
+WAbout::WAbout(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::wabout)
+    ui(new Ui::WAbout)
 {
     ui->setupUi(this);
 }
 
-wabout::~wabout()
+WAbout::~WAbout()
 {
     delete ui;
 }

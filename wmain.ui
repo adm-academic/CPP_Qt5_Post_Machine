@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>WMain</string>
+   <string>Emil Post's Calculating Machine</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -81,7 +81,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>5</number>
         </property>
         <property name="tabSpacing">
          <number>0</number>

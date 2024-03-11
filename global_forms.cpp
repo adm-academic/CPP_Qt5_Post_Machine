@@ -2,3 +2,4 @@
 
 Settings*    app_settings;
 WMain*       wmain;
+WAbout*      wabout;

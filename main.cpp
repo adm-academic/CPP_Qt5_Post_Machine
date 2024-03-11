@@ -13,11 +13,14 @@ int main(int argc, char *argv[])
     app_settings->find_basedir_and_changedir();
     app_settings->load_current_config_file_locale();
 
+    wabout = new WAbout();
+
     wmain = new WMain();
     wmain->show();
 
     return a.exec();
 
     delete wmain;
+    delete wabout;
     delete app_settings;
 }

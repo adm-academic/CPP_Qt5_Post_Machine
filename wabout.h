@@ -4,19 +4,19 @@
 #include <QDialog>
 
 namespace Ui {
-class wabout;
+class WAbout;
 }
 
-class wabout : public QDialog
+class WAbout : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit wabout(QWidget *parent = nullptr);
-    ~wabout();
+    explicit WAbout(QWidget *parent = nullptr);
+    ~WAbout();
 
 private:
-    Ui::wabout *ui;
+    Ui::WAbout *ui;
 };
 
 #endif // WABOUT_H
