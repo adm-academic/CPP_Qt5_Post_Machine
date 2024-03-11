@@ -17,6 +17,7 @@ SOURCES += \
     post_program.cpp \
     post_tape.cpp \
     settings.cpp \
+    wabout.cpp \
     wmain.cpp
 
 HEADERS += \
@@ -27,9 +28,11 @@ HEADERS += \
     post_program.h \
     post_tape.h \
     settings.h \
+    wabout.h \
     wmain.h
 
 FORMS += \
+    wabout.ui \
     wmain.ui
 
 TRANSLATIONS += \

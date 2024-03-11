@@ -43,6 +43,14 @@ private slots:
 
     void on_pb_help_clicked();
 
+    void on_rb_speed_slow_clicked();
+
+    void on_rb_speed_medium_clicked();
+
+    void on_rb_speed_fast_clicked();
+
+    void on_rb_speed_veryfast_clicked();
+
 private:
     Ui::WMain*      ui;
     Post_Engine*    post_engine=nullptr;

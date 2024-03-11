@@ -14,6 +14,11 @@ Post_Engine::Post_Engine(QObject *parent, Post_Program *post_program, Post_Tape 
     this->timer->setInterval( 1000 );
 }
 
+void Post_Engine::set_timer_speed(int speed)
+{
+    this->timer->setInterval( speed );
+}
+
 Post_Engine::~Post_Engine()
 {
     delete timer;

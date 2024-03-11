@@ -144,3 +144,27 @@ void WMain::on_pb_help_clicked()
     /// ...
 }
 
+
+void WMain::on_rb_speed_slow_clicked()
+{
+    this->post_engine->set_timer_speed(2000);
+}
+
+
+void WMain::on_rb_speed_medium_clicked()
+{
+    this->post_engine->set_timer_speed(1000);
+}
+
+
+void WMain::on_rb_speed_fast_clicked()
+{
+    this->post_engine->set_timer_speed(300);
+}
+
+
+void WMain::on_rb_speed_veryfast_clicked()
+{
+    this->post_engine->set_timer_speed(50);
+}
+

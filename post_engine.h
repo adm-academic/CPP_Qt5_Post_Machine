@@ -29,6 +29,8 @@ public:
     void debug_program_from_current_line(); // с текущей строки программы включает пошаговый режим
     void error_program(QString error); // останавливает программу аварийно
 
+    void set_timer_speed(int speed);
+
 protected:
     bool check_reference(QString reference);
     int  get_int_reference(QString reference);
