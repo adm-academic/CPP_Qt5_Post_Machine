@@ -163,9 +163,10 @@ int Post_Tape::get_carriage_position()
 
 void Post_Tape::set_carriage_position(int position)
 {
-    int carriage_rect_position = this->tape_rects->size() / 2;
-    int deltha_vi = carriage_rect_position - 0;
-    int tape_begin_position = position - deltha_vi;
+    this->carriage_tape_position = position; // CPT
+    int paint_carriage_position =  this->tape_rects->size() / 2; // CPV
+    int deltha_vi = paint_carriage_position - 0; // Dv
+    int tape_begin_position = position - deltha_vi; // BVofT
     this->set_tape_visible_start( tape_begin_position );
     this->update();
 }
@@ -226,7 +227,7 @@ int Post_Tape::get_tape_visible_start() const
 
 void Post_Tape::set_tape_visible_start(int new_tape_visible_start)
 {
-    tape_visible_start = new_tape_visible_start;
+    this->tape_visible_start = new_tape_visible_start;
     this->update();
 }
 

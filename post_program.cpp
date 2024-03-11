@@ -161,6 +161,7 @@ void Post_Program::clear()
         this->set_cell_string(i,1,"");
         this->set_cell_string(i,2,"");
     };
+    this->selectRow(0);
 }
 
 void Post_Program::set_cell_string(int cell_row, int cell_col, QString str)

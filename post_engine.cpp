@@ -103,7 +103,7 @@ void Post_Engine::step_program()
     QString reference = this->post_program->get_cell_string(current_row,1);
     QString comment   = this->post_program->get_cell_string(current_row,2);
 
-    if ( (current_row+1)==this->post_program->rowCount() // провеяем штатный конец программы
+    if ( (current_row+1)==this->post_program->rowCount() // проверяем штатный конец программы
          and reference.trimmed().isEmpty()
          and command!="stop" ){
         this->error_program( tr("Error! The program ended unexpectedly!") );
