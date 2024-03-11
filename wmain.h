@@ -39,6 +39,10 @@ private slots:
 
     void on_pb_file_load_clicked();
 
+    void on_pb_about_clicked();
+
+    void on_pb_help_clicked();
+
 private:
     Ui::WMain*      ui;
     Post_Engine*    post_engine=nullptr;

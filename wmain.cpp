@@ -132,3 +132,15 @@ void WMain::on_pb_file_load_clicked()
     this->file_layer->dialog_load_from_file();
 }
 
+
+void WMain::on_pb_about_clicked()
+{
+    /// ...
+}
+
+
+void WMain::on_pb_help_clicked()
+{
+    /// ...
+}
+

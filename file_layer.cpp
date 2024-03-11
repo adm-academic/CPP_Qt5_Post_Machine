@@ -119,6 +119,10 @@ void File_Layer::save_to_file(QString filename)
 
 void File_Layer::load_from_file(QString filename)
 {
+    //--- Clear Current All Post Programm Data -----
+    this->pte_task->clear();
+    this->post_tape->clear();
+    this->post_program->clear();
     qDebug() << "loading from file:" << filename;
     //--- Read Json Text Data -----
     QString text_json;
