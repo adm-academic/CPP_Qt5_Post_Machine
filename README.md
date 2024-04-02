@@ -10,7 +10,8 @@
 
 
 
-Ссылки на использовавшиеся материалы:
+# Ссылки на использовавшиеся материалы:
+
 http://www.prog.org.ru/index.php?topic=31629.0
 
 https://www.cyberforum.ru/qt/thread1468699.html?ysclid=lrbxb1ue2t751403104
