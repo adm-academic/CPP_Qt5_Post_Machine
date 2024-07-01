@@ -51,13 +51,15 @@ void Settings::find_basedir_and_changedir(){
 
 
 void Settings::load_current_config_file_locale(){
+    // заготовка метода по загрузке переводов в программу...
+    // переводы в состоянии близком к 0, нужно взятся и сделать...
     if ( this->get_application_locale()=="en_US" ){
         this->translator.load(nullptr);
         qApp->installTranslator( &(this->translator) );
     }
     else if (this->get_application_locale()=="ru_RU"){
         const QString baseName = "CPP_Qt5_Post_Machine_" + this->get_application_locale() + ".qm";
-        this->translator.load(nullptr);
+
         if ( this->translator.load( baseName ) ) {
             qApp->installTranslator( &(this->translator) );
         };

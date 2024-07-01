@@ -32,6 +32,7 @@ HEADERS += \
     wmain.h
 
 FORMS += \
+    form.ui \
     wabout.ui \
     wmain.ui
 
