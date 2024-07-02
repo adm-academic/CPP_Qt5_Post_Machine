@@ -14,6 +14,7 @@ class WAbout : public QDialog
 public:
     explicit WAbout(QWidget *parent = nullptr);
     ~WAbout();
+    void changeEvent(QEvent* pe);
 
 private:
     Ui::WAbout *ui;

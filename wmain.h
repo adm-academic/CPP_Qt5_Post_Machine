@@ -16,6 +16,7 @@ class WMain : public QMainWindow
 public:
     WMain(QWidget *parent = nullptr);
     ~WMain();
+    void  changeEvent(QEvent* pe);
 
 private slots:
     void slot_change_state(Execution_State new_state);

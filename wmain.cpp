@@ -166,3 +166,10 @@ void WMain::on_rb_speed_veryfast_clicked()
     this->post_engine->set_timer_speed(50);
 }
 
+void WMain::changeEvent(QEvent* pe) // нужно для перевода окна "На лету"
+{
+    if (pe->type() == QEvent::LanguageChange){
+        ui->retranslateUi(this);
+    };
+    QWidget::changeEvent(pe);
+}

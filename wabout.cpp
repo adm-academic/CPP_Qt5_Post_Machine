@@ -12,3 +12,12 @@ WAbout::~WAbout()
 {
     delete ui;
 }
+
+
+void WAbout::changeEvent(QEvent* pe) // нужно для перевода окна "На лету"
+{
+    if (pe->type() == QEvent::LanguageChange){
+        ui->retranslateUi(this);
+    };
+    QWidget::changeEvent(pe);
+}
